@@ -11,7 +11,7 @@ import "animate.css/animate.min.css";
 
 
 Modal.setAppElement('#root');
-function AllMovies() {
+function AllSeries() {
     const [allPostsData, setAllPosts] = useState(null);
     const [data, setData] = useState({});
 
@@ -30,10 +30,11 @@ function AllMovies() {
     useEffect(()=>{
         sanityClient
           .fetch(
-            ` *[_type == "movie"]{
+            ` *[_type == "series"]{
                 title,
                 slug,
             overview,
+            episodes, 
             releaseDate,
             externalId,
             popularity,
@@ -46,12 +47,11 @@ function AllMovies() {
   return (
     <div>
     <div className={styles["main"]}>
-  <h1>All Movies</h1>
+  <h1>All Series</h1>
   <ul className={styles["cards"]}>
    
     {
         allPostsData && allPostsData.map((item, index)=> <AnimationOnScroll key={index}  className={styles["cards_item"]} animateIn="animate__fadeInLeftBig" initiallyVisible={(index<=2)}>
-        
      <li>
         <div className={styles["card"]}>
           <div className={styles["card_image"]}><img src={item.posterImage}/></div>
@@ -69,7 +69,8 @@ function AllMovies() {
   </ul>
 </div>
 
-<Modal style={{
+<Modal
+style={{
     overlay: {
       position: 'fixed',
       top: 0,
@@ -111,13 +112,15 @@ function AllMovies() {
         </p>
 
         <p>
-
         <strong>Release Date:</strong>{data.releaseDate}
         </p>
 
         <p>
-
         <strong>Rating:</strong> 8/10
+        </p>
+
+        <p>
+        <strong>Episodes:</strong> {data.episodes}
         </p>
 
         <button className={styles['action']}>Action</button>
@@ -136,4 +139,4 @@ function AllMovies() {
     </div> )
 }
 
-export default AllMovies
+export default AllSeries

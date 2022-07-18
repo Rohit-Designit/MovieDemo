@@ -8,9 +8,6 @@
   box-sizing: border-box;
 }
 
-html {
-  background-color: #ecf9ff;
-}
 
 body {
   color: #272727;
@@ -28,8 +25,9 @@ body {
 
 h1 {
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 800;
     text-align: center;
+    color: #e9dbda;
 }
 
 img {
@@ -137,6 +135,7 @@ padding-left: 15px ;
   outline: none;
   border: none;
   font-size: 60px;
+  color: #e9dbda;
   font-weight: 200;
   cursor: pointer;
 }
